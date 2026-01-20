@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: -1;
+}
+
+input {
+  display: block;
+  margin: 25px auto;
+  padding: 12px 20px;
+  width: 280px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  background: rgba(247, 246, 246, 0.3);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: #ddd;
+}
+
+.pmBox {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 25px;
+  padding: 30px;
+}
+
+.pokemonDetails {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+  transition:
+  transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.pokemonDetails:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
+}
+
+.images {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.8));
+}
+
+.name {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+}
+
+.loadMore {
+  display: block;
+  margin: 40px auto 60px;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #09015c, #f19e04);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(221, 36, 118, 0.5);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.loadMore:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(221, 36, 118, 0.8);
+}
