@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 .bg-video {
@@ -45,6 +46,7 @@ input::placeholder {
   gap: 25px;
   padding: 30px;
   position: relative;
+  justify-items: center;
 }
 
 .pokemonDetails {
@@ -52,7 +54,7 @@ input::placeholder {
   backdrop-filter: blur(20px);
   border-radius: 18px;
   padding: 20px;
-
+  width: 220px;
   text-align: center;
   color: white;
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
@@ -106,7 +108,7 @@ input::placeholder {
   border-radius: 30px;
   background: linear-gradient(135deg, #09015c, #f19e04);
 
-  color:white;
+  color: white;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -153,6 +155,6 @@ h1 {
 .back {
   color: white;
   gap: 10px;
-  font-size: 18px;
+  font-size: 15px;
   transform: rotateY(180deg);
 }
