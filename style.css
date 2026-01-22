@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
 .bg-video {
@@ -40,24 +39,40 @@ input::placeholder {
   color: #ddd;
 }
 
-.pmBox {
+.wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 25px;
   padding: 30px;
+  position: relative;
 }
 
 .pokemonDetails {
   background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(20px);
   border-radius: 18px;
   padding: 20px;
+
   text-align: center;
   color: white;
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
   transition:
-  transform 0.35s ease,
+    all 0.35s ease,
     box-shadow 0.35s ease;
+  perspective: 1000px;
+  animation: fade 1s linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .pokemonDetails:hover {
@@ -66,27 +81,32 @@ input::placeholder {
 }
 
 .images {
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   object-fit: contain;
   filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.8));
 }
 
 .name {
   margin-top: 12px;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   text-transform: capitalize;
   letter-spacing: 2px;
 }
 
 .loadMore {
-  display: block;
-  margin: 40px auto 60px;
+  position: absolute;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+  bottom: 20px;
+
   padding: 14px 40px;
   border: none;
   border-radius: 30px;
   background: linear-gradient(135deg, #09015c, #f19e04);
-  color: #fff;
+
+  color:white;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -99,4 +119,40 @@ input::placeholder {
 .loadMore:hover {
   transform: scale(1.1);
   box-shadow: 0 15px 40px rgba(221, 36, 118, 0.8);
+}
+h1 {
+  color: white;
+  margin: 2rem;
+  text-align: center;
+}
+
+.both {
+  position: relative;
+  height: 200px;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+
+.pokemonDetails:hover .both {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  backface-visibility: hidden;
+}
+
+.back {
+  color: white;
+  gap: 10px;
+  font-size: 18px;
+  transform: rotateY(180deg);
 }
