@@ -1,6 +1,7 @@
 let wrapper = document.querySelector(".wrapper");
 let loadbtn = document.querySelector(".loadMore");
 let input = document.querySelector("input");
+let select = document.querySelector("select");
 let limit = 20;
 let offset = 0;
 let allPokemon = [];
@@ -55,10 +56,6 @@ function RenderPokemon(details) {
   div.append(both);
   wrapper.append(div);
 }
-loadbtn.addEventListener("click", () => {
-  offset += 20;
-  pokemon();
-});
 
 async function DisplayDetails(data) {
   data.results.forEach(async (item) => {
@@ -81,4 +78,16 @@ input.addEventListener("keyup", (e) => {
     poke.name.includes(e.target.value.toLowerCase()),
   );
   filtered.forEach((poke) => RenderPokemon(poke));
+});
+
+select.addEventListener("change", (e) => {
+  let value = e.target.value.toLowerCase();
+  wrapper.innerHTML = "";
+  let filteredpokemon = allPokemon.filter((pok) => {
+    let byType = pok.types.some((t) => t.type.name.includes(value));
+
+    return byType;
+  });
+
+  filteredpokemon.forEach(RenderPokemon);
 });

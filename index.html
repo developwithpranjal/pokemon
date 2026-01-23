@@ -5,19 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokemon</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <video autoplay muted loop class="bg-video">
       <source src="./assets/199621-910995780_medium.mp4" type="video/mp4" />
     </video>
     <h1>Welcome to the Pokemon Land....</h1>
-        <input type="text" placeholder="Search Your Pokemon" />
-    <div class="wrapper">
+    <div class="header">
+      <input type="text" placeholder="Search Your Pokemon" />
+      <select>
+        <option value="all">Filter By type</option>
+        <option value="fire">Fire</option>
+        <option value="water">Water</option>
+        <option value="grass">Grass</option>
+        <option value="electric">Electric</option>
+        <option value="psychic">Psychic</option>
+        <option value="dragon">Dragon</option>
+        <option value="dark">Dark</option>
+        <option value="normal">normal</option>
+        <option value="fairy">fairy</option>
+        <option value="poison">poison</option>
+        <option value="fighting">fighting</option>
+        <option value="rock">rock</option>
+      </select>
+    </div>
+    <div class="wrapper"></div>
     <button class="loadMore">Load More</button>
-</div>
     <script src="script.js"></script>
   </body>
 </html>
