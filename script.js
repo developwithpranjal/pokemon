@@ -53,7 +53,7 @@ function RenderPokemon(details) {
   front.append(image, name);
   both.append(front, back);
   div.append(both);
-  wrapper.append(div);
+  return div;
 }
 
 async function DisplayDetails(data) {
@@ -64,13 +64,20 @@ async function DisplayDetails(data) {
     let allpromises = await Promise.all(promises);
 
     allPokemon.push(...allpromises);
-    allpromises.forEach(RenderPokemon);
+    let fragment = document.createDocumentFragment();
+    // allpromises.forEach(RenderPokemon);
     // RenderPokemon(allpromises);
+    allPokemon.forEach((pokemon) => {
+      let div = RenderPokemon(pokemon);
+      fragment.append(div);
+    });
+    wrapper.append(fragment);
     console.log(allpromises);
   } catch (error) {
     console.log(error);
   }
 }
+
 input.addEventListener("keyup", (e) => {
   wrapper.innerHTML = "";
 
@@ -78,11 +85,12 @@ input.addEventListener("keyup", (e) => {
     poke.name.includes(e.target.value.toLowerCase()),
   );
 
-  if (filtered.length > 0) {
-    filtered.forEach(RenderPokemon);
-  } else {
-    wrapper.innerHTML = `<p class ="error"> Error :No Pokemon Found</p> `;
-  }
+  let fragment = document.createDocumentFragment();
+  filtered.forEach((pokemon) => {
+    fragment.append(RenderPokemon(pokemon));
+  });
+
+  wrapper.append(fragment);
 });
 
 select.addEventListener("change", (e) => {
