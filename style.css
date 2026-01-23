@@ -175,13 +175,17 @@ h1 {
   font-size: 15px;
   transform: rotateY(180deg);
 }
+.error{
+  color: #ddd;
+  font-size: 50px;
+  font-weight: bold;
+}
 @media (max-width:440px) {
   .header{
     width: 90%;
     flex-direction: column;
   }
-  /* .both{
-    height: 180px;
-  } */
-  
+  h1{
+    text-align: center;
+  }
 }

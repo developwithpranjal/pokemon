@@ -78,6 +78,11 @@ input.addEventListener("keyup", (e) => {
     poke.name.includes(e.target.value.toLowerCase()),
   );
   filtered.forEach((poke) => RenderPokemon(poke));
+  if (filtered.length > 0) {
+    filtered.forEach(RenderPokemon);
+  } else {
+    wrapper.innerHTML = `<p class ="error"> Error :No Pokemon Found</p> `;
+  }
 });
 
 select.addEventListener("change", (e) => {
