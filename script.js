@@ -45,8 +45,7 @@ function RenderPokemon(details) {
        <p>Height: ${details.height}ft</p>
        <p>Moves: ${details.moves[0].move.name}</p>
        <p>Abilities: ${details.abilities[0].ability.name}
-       <p>Type: ${details.types[0].type.name}
-       `;
+       <p>Type: ${details.types[0].type.name}`;
 
   let both = document.createElement("div");
   both.classList.add("both");
@@ -58,26 +57,27 @@ function RenderPokemon(details) {
 }
 
 async function DisplayDetails(data) {
-  data.results.forEach(async (item) => {
-    try {
-      let result = await fetch(item.url);
-      let details = await result.json();
-      allPokemon.push(details);
-      RenderPokemon(details);
-      console.log(details);
-    } catch (error) {
-      console.log(error);
-    }
-  });
-}
+  try {
+    let promises = data.results.map((item) =>
+      fetch(item.url).then((response) => response.json()),
+    );
+    let allpromises = await Promise.all(promises);
 
+    allPokemon.push(...allpromises);
+    allpromises.forEach(RenderPokemon);
+    // RenderPokemon(allpromises);
+    console.log(allpromises);
+  } catch (error) {
+    console.log(error);
+  }
+}
 input.addEventListener("keyup", (e) => {
   wrapper.innerHTML = "";
 
   let filtered = allPokemon.filter((poke) =>
     poke.name.includes(e.target.value.toLowerCase()),
   );
-  filtered.forEach((poke) => RenderPokemon(poke));
+
   if (filtered.length > 0) {
     filtered.forEach(RenderPokemon);
   } else {
