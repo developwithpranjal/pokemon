@@ -96,11 +96,17 @@ input.addEventListener("keyup", (e) => {
 select.addEventListener("change", (e) => {
   let value = e.target.value.toLowerCase();
   wrapper.innerHTML = "";
-  let filteredpokemon = allPokemon.filter((pok) => {
-    let byType = pok.types.some((t) => t.type.name.includes(value));
-
-    return byType;
+  let filteredpokemon = allPokemon.filter((pok) =>
+    pok.types.some((t) => t.type.name === value),
+  );
+  let fragment = document.createDocumentFragment();
+  filteredpokemon.forEach((pokemon) => {
+    fragment.append(RenderPokemon(pokemon));
   });
 
-  filteredpokemon.forEach(RenderPokemon);
+  wrapper.append(fragment);
 });
+// return byType;
+
+//   filteredpokemon.forEach(RenderPokemon);
+// });

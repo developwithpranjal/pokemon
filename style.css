@@ -42,9 +42,8 @@ body::before {
   font-size: 16px;
   color: white;
 }
-option{
+option {
   background-color: grey;
-  
 }
 
 input:focus,
@@ -175,17 +174,17 @@ h1 {
   font-size: 15px;
   transform: rotateY(180deg);
 }
-.error{
+.error {
   color: #ddd;
   font-size: 40px;
   font-weight: bold;
 }
-@media (max-width:440px) {
-  .header{
+@media (max-width: 440px) {
+  .header {
     width: 90%;
     flex-direction: column;
   }
-  h1{
+  h1 {
     text-align: center;
   }
 }
